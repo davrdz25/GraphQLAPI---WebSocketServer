@@ -1,0 +1,57 @@
+enum SenderType {
+  client
+  support
+}
+
+enum ConversationStatus {
+  open
+  closed
+  transferred
+  pending
+}
+
+type Message {
+  MessageEntry: ID!
+  ConversationEntry: Int!
+  SenderAccountEntry: Int!
+  SenderType: SenderType!
+  MessageContent: String!
+  Attachment: String
+  SentTimestamp: String!
+  ReceivedTimestamp: String
+}
+
+type Conversation {
+  ConversationEntry: ID!
+  ContactEntry: Int!
+  OriginAccountEntry: Int!
+  AssignedAgentEntry: Int
+  Status: ConversationStatus!
+  StartDate: String
+  StartTime: String
+  TransferDate: String
+  TransferTime: String
+  EndDate: String
+  EndTime: String
+  Messages: [Message!]!
+}
+
+type ChatQuery {
+  GetConversation(ConversationEntry: ID!): Conversation
+  ListConversations: [Conversation!]!
+  ListMessages(ConversationEntry: ID!): [Message!]!
+}
+
+type ChatMutation {
+  CreateConversation(ContactEntry: Int!, OriginAccountEntry: Int!): Conversation
+  TransferConversation(ConversationEntry: ID!, AssignedAgentEntry: Int!): Conversation
+  CloseConversation(ConversationEntry: ID!): Conversation
+
+  SendMessage(
+    ConversationEntry: Int!
+    SenderAccountEntry: Int!
+    SenderType: SenderType!
+    MessageContent: String!
+    Attachment: String
+  ): Message
+}

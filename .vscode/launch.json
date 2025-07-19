@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "LLDB Debug Server",
+        "type": "lldb",
+        "request": "launch",
+        "program": "${workspaceFolder}/build/Server",
+        "args": [],
+        "cwd": "${workspaceFolder}",
+        "stopOnEntry": false,
+        "terminal": "integrated"
+      }
+    ]
+  }
+  

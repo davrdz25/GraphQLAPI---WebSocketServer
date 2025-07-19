@@ -1,0 +1,115 @@
+type User {
+  Entry: Int!
+  Code: String!
+  FirstName: String!
+  MiddleName: String
+  LastName: String!
+  SecondLastName: String
+  Email: String!
+  Phone: String!
+  Password: String!
+}
+
+type UserPublic {
+  Entry: Int!
+  Code: String!
+  FirstName: String!
+  MiddleName: String
+  LastName: String!
+  SecondLastName: String
+  Email: String!
+  Phone: String!
+} 
+
+type AuthPayload {
+  Token: String!
+  User: UserPublic!
+}
+
+input CreateUser {
+  Entry: Int!
+  Code: String!
+  FirstName: String!
+  MiddleName: String
+  LastName: String!
+  SecondLastName: String
+  Email: String!
+  Phone: String!
+  Password: String!
+}
+ 
+input UserInput {
+  Entry: Int
+  Code: String
+  FirstName: String
+  MiddleName: String
+  LastName: String
+  SecondLastName: String
+  Email: String
+  Phone: String
+}
+
+input UpdateUserInput {
+  Entry: Int!
+  Code: String!
+  FirstName: String
+  MiddleName: String
+  LastName: String
+  SecondLastName: String
+  Email: String
+  Phone: String
+}
+
+input ChangePasswordInput {
+  Code: String
+  Email: String
+  Phone: String
+  OldPassword: String!
+  NewPassword: String!
+}
+
+input CreateUserInput {
+  Code: String!,
+  FirstName: String!
+  MiddleName: String
+  LastName: String!
+  SecondLastName: String
+  Email: String!
+  Phone: String!,
+  Password:String!
+}
+
+input UserSession {
+  Code: String
+  Email: String
+  Phone: String
+  Password: String!
+}
+
+input SearchUser {
+  ExactValues: Boolean!
+  FirstName: String, 
+  MiddleName: String, 
+  LastName: String, 
+  SecondLastName: String
+}
+
+type UserQuery {
+  GetUser(Entry: Int, Code: String, Email: String, Phone: String): UserPublic
+  GetUsers(Filter: SearchUser!): [UserPublic!]!
+}
+
+type UserMutation {
+  CreateUser(User: CreateUserInput!): UserPublic!
+  UpdateUser(User: UpdateUserInput!): UserPublic!
+  ModifyPassword(User: ChangePasswordInput!): Boolean!
+  LoginUser(User: UserSession!): AuthPayload!
+}
+
+type Query {
+  User: UserQuery
+}
+
+type Mutation {
+  User: UserMutation
+}

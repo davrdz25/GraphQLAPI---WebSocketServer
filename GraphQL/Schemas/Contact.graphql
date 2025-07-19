@@ -1,0 +1,40 @@
+type Contact {
+  ContactEntry: Int!
+  FullName: String!
+  Alias: String!
+  Country: String!
+  PhoneNumber: String!
+  Email: String
+}
+
+type ContactQuery {
+  GetContact(ContactEntry: Int!): Contact
+  GetContacts(
+    ContactEntry: Int
+    FullName: String
+    Alias: String
+    Country: String
+    PhoneNumber: String
+    Email: String
+  ): [Contact!]!
+  ListContacts: [Contact!]!
+}
+
+type ContactMutation {
+  CreateContact(
+    FullName: String!
+    Alias: String!
+    Country: String!
+    PhoneNumber: String!
+    Email: String
+  ): Contact
+
+  CreateUdateContact(
+    ContactEntry: Int!
+    FullName: String
+    Alias: String
+    Country: String
+    PhoneNumber: String
+    Email: String
+  ): Contact
+}
