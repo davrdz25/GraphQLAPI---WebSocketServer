@@ -4,18 +4,6 @@ This repository contains a modular C++ backend architecture for interacting with
 
 This project provides the backend foundation for C++ applications that interact with MSSQL databases via a GraphQL interface. It leverages patterns like Repository and Service to ensure modularity, maintainability, and scalability.
 
-🗂️ Project Structure
-
-/
-├── Database/ → MSSQL connection and migration logic
-├── GraphQL/ → GraphQL schemas and resolvers
-├── Interfaces/ → Generic interfaces for DAOs and services
-├── Models/ → Domain entities (e.g., User, Product)
-├── Repositories/ → Data access implementations
-├── Services/ → Business logic layer
-├── CMakeLists.txt → Build system definition
-└── main.cpp → Application entry point
-
 🔧 Requirements
 
 C++20 compatible compiler
@@ -25,6 +13,13 @@ Boost (recommended modules: boost::asio, boost::beast, boost::json)
 libsodium (for encryption and secure data handling)
 cppgraphqlgen (GraphQL code generation and runtime support is required)
 ⚙️ Building
+Go to GraphQL/Schemas and run to generate GraphQl files
+schemagen \       
+  --schema User.graphql \
+  --prefix User \
+  --namespace user \
+  --header-dir ../Generated/User \
+  --source-dir ../Generated/User
 
 Clone the repository:
 git clone https://github.com/davrdz25/SQL.git
