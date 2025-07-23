@@ -68,8 +68,9 @@ public:
         }
         catch (const std::exception &e)
         {
-            std::cerr << e.what() << '\n';
-            throw std::runtime_error(e.what());
+            throw graphql::service::schema_exception({graphql::service::schema_error{
+                .message = e.what(),
+                .path = {"User", "CreateUser"}}});
         }
     }
 
@@ -141,8 +142,9 @@ public:
         }
         catch (const std::exception &e)
         {
-            std::cerr << e.what() << '\n';
-            throw std::runtime_error(e.what());
+            throw graphql::service::schema_exception({graphql::service::schema_error{
+                .message = e.what(),
+                .path = {"User", "ModifyPassword"}}});
         }
     }
 
@@ -171,7 +173,9 @@ public:
         }
         catch (const std::exception &e)
         {
-            throw std::runtime_error(std::string("[GraphQL Exception] ") + e.what());
+            throw graphql::service::schema_exception({graphql::service::schema_error{
+                .message = e.what(),
+                .path = {"User", "LoginUser"}}});
         }
     };
 };

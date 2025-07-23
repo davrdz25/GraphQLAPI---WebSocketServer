@@ -177,7 +177,7 @@ AuthPayloadModel UserService::CreateUserSession(const UserSessionDTO &dto)
     }
     catch (const std::exception &e)
     {
-        throw std::runtime_error(std::string("[Login exception] ") + e.what());
+        throw std::runtime_error(e.what());
     }
 };
 
@@ -257,7 +257,7 @@ UserPublicModel UserService::GetUserByCode(const std::string &code)
     }
     catch (const std::exception &e)
     {
-        throw std::runtime_error(std::string("[GetUser Exception] ") + " " + e.what());
+        throw std::runtime_error(e.what());
     }
 };
 
@@ -297,7 +297,7 @@ UserPublicModel UserService::GetUserByPhone(const std::string &phone)
     }
     catch (const std::exception &e)
     {
-        throw std::runtime_error(std::string("[GetUser Exception] ") + " " + e.what());
+        throw std::runtime_error(e.what());
     }
 };
 
@@ -337,6 +337,6 @@ UserPublicModel UserService::GetUserByEmail(const std::string &email)
     }
     catch (const std::exception &e)
     {
-        throw std::runtime_error(std::string("[GetUser Exception] ") + " " + e.what());
+        throw std::runtime_error(e.what());
     };
 };
