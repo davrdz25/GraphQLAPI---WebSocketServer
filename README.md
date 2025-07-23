@@ -12,8 +12,11 @@ ODBC Driver for SQL Server (e.g., ODBC Driver 17 for SQL Server)
 Boost (recommended modules: boost::asio, boost::beast, boost::json)
 libsodium (for encryption and secure data handling)
 cppgraphqlgen (GraphQL code generation and runtime support is required)
+
 ⚙️ Building
+
 Go to GraphQL/Schemas and run to generate GraphQl files
+
 schemagen \       
   --schema User.graphql \
   --prefix User \
