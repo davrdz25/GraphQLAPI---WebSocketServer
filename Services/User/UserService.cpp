@@ -232,6 +232,17 @@ UserPublicModel UserService::GetUserByCode(const std::string &code)
         if (data.RowsCount() > 1)
             throw std::runtime_error("Inconstence retreiving Users, not exists or exists more than one");
 
+        if (data.RowsCount() == 0)
+            return UserPublicModel{
+                -1,
+                "",
+                "",
+                std::nullopt,
+                "",
+                std::nullopt,
+                "",
+                ""};
+        
         UserPublicModel user{
             data[0]["UserEntry"],
             data[0]["UserCode"],
@@ -260,6 +271,17 @@ UserPublicModel UserService::GetUserByPhone(const std::string &phone)
 
         if (data.RowsCount() > 1)
             throw std::runtime_error("Inconstence retreiving Users, not exists or exists more than one");
+        
+        if (data.RowsCount() == 0)
+            return UserPublicModel{
+                -1,
+                "",
+                "",
+                std::nullopt,
+                "",
+                std::nullopt,
+                "",
+                ""};
 
         UserPublicModel user{
             data[0]["UserEntry"],
@@ -290,6 +312,17 @@ UserPublicModel UserService::GetUserByEmail(const std::string &email)
         if (data.RowsCount() > 1)
             throw std::runtime_error("Inconstence retreiving Users, not exists or exists more than one");
 
+        if (data.RowsCount() == 0)
+            return UserPublicModel{
+                -1,
+                "",
+                "",
+                std::nullopt,
+                "",
+                std::nullopt,
+                "",
+                ""};
+                
         UserPublicModel user{
             data[0]["UserEntry"],
             data[0]["UserCode"],
