@@ -1,15 +1,3 @@
-type User {
-  Entry: Int!
-  Code: String!
-  FirstName: String!
-  MiddleName: String
-  LastName: String!
-  SecondLastName: String
-  Email: String!
-  Phone: String!
-  Password: String!
-}
-
 type UserPublic {
   Entry: Int!
   Code: String!
